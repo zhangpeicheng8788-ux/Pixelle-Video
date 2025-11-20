@@ -1,4 +1,4 @@
-<h1 align="center">🎬 Pixelle-Video —— AI 全自动短视频引擎</h1>
+<img width="1759" height="758" alt="image" src="https://github.com/user-attachments/assets/8cc443ea-a0af-48fd-8be6-cd0a844907f0" /><h1 align="center">🎬 Pixelle-Video —— AI 全自动短视频引擎</h1>
 
 <p align="center"><a href="README_EN.md">English</a> | <b>中文</b></p>
 
@@ -29,12 +29,15 @@
 
 
 ## 📋 更新日志
+### 2025-11-19 版本：0.1.6
+-调整 RunningHub 服务调用逻辑，支持并行处理和单线处理，普通会员和企业会员均可使用
+
 
 ### 2025-11-18
 
 - 优化 RunningHub 服务调用，支持并行处理，大幅提升生成速度
 - 新增历史记录页面，可查看和管理所有生成过的视频
-- 支持一次性创建多个视频任务，提高批量创作效率
+- 支持一次性批量创建多个视频任务，提高批量创作效率
 
 
 ## ✨ 功能亮点
@@ -190,14 +193,20 @@ uv run streamlit run web/app.py
 ```
 
 浏览器会自动打开 http://localhost:8501
+注意：本项目 不会自动生成桌面快捷方式， 请在安装 Pixelle-Video后自行创建桌面快捷方式。
 
 #### 第三步：在 Web 界面配置
 
 首次使用时，展开「⚙️ 系统配置」面板，填写：
-- **LLM 配置**: 选择 AI 模型（如通义千问、GPT 等）并填入 API Key
+- **LLM 配置**: 选择 AI 模型（如通义千问、GPT、deepseek 等）并填入 API Key
 - **图像配置**: 如需生成图片，配置 ComfyUI 地址或 RunningHub API Key
 
 配置好后点击「保存配置」，就可以开始生成视频了！
+
+-注意请一定确保comfyui是跑通状态，并把Pixelle自带的工作流拖入到comfyui，调整好各参数，在pixelle里面显示连接测试通过。
+- 如本地电脑未正确安装comfyui，请直接到RunningHub.ai/RunningHub.cn 直接获取API，并填入到Pixelle-Video。
+
+
 
 
 ## 💻 使用方法
@@ -257,6 +266,8 @@ uv run streamlit run web/app.py
 - 从下拉菜单选择 TTS 工作流（支持 Edge-TTS、Index-TTS 等）
 - 系统会自动扫描 `workflows/` 文件夹中的 TTS 工作流
 - 如果懂 ComfyUI，可以自定义 TTS 工作流
+- 请注意使用本地comfyui工作流时，工作流在\Pixelle-Video\workflows\selfhost 下，相关节点模型请自行调试好。
+- 相关工作流命名可参考项目自带的工作流命名方式
 
 #### 参考音频（可选）
 - 上传参考音频文件用于声音克隆（支持 MP3/WAV/FLAC 等格式）
